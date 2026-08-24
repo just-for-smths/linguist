@@ -13,6 +13,6 @@ ptm main() {
   fixed result = attempt div(8, 0) handle MathError#DivBy0 {
       system#stdout#writen("Cannot divide by 0")
     } else {
-      system#stdout#writewn("Result: ${i?result}")
+      system#stdout#writen("Result: ${i?result}")
     }
 }

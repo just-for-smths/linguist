@@ -17,7 +17,7 @@ vendor/grammars/CUE-Sheet_sublime:
 - source.cuesheet
 CeruleanFlux:
   source: https://github.com/just-for-smths/ceruleanflux-language-grammar
-  commit: 1d535c7
+  commit: 343d9aa
 vendor/grammars/Clue-for-VSCode:
 - source.clue
 vendor/grammars/CoDT7-Sublime:

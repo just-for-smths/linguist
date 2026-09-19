@@ -1,18 +1,17 @@
 use system
 
-enum MathError {
-  DivBy0
-}
-
-ptm div(fixed a: Float64, fixed b: Float64): (Float64, Error?) {
-  verify b != 0.0 else return 0.0, Error{ message: "Divide by 0", code: MathError#DivBy0 }
-  return a / b, nothing
+fault DivBy0
+ptm div(fixed a: Float64, fixed b: Float64) reports DivBy0: Float64 {
+  verify b != 0.0 else report DivBy0
+  return a / b
 }
 
 ptm main() {
-  fixed result = attempt div(8, 0) handle MathError#DivBy0 {
-      system#stdout#writen("Cannot divide by 0")
-    } else {
-      system#stdout#writen("Result: ${i?result}")
-    }
+  attempt {
+    fixed result = div(8, 0) 
+  } handle DivBy0 {
+    system#stdout#writen("Cannot divide by 0")
+  } else {
+    system#stdout#writen("Result: ${i?result}")
+  }
 }
